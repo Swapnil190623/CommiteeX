@@ -54,7 +54,7 @@ export function StudentDashboard() {
           <div className="mt-5 flex flex-wrap gap-3">
             <button
               onClick={() => navigate('/events')}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-royal-700 font-semibold text-xs sm:text-sm hover:bg-royal-50 transition shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface text-royal-700 font-semibold text-xs sm:text-sm hover:bg-royal-50 transition shadow-sm"
             >
               <CalendarDays className="h-4 w-4" /> Browse Events
             </button>
@@ -81,13 +81,13 @@ export function StudentDashboard() {
             <div
               key={a.label}
               onClick={() => navigate(a.path)}
-              className="bg-white rounded-2xl border border-ink-200/70 p-4 cursor-pointer hover:shadow-float hover:border-ink-300 transition-all group"
+              className="bg-surface rounded-2xl border border-border/70 p-4 cursor-pointer hover:shadow-float hover:border-fg-faint/40 transition-all group"
             >
               <div className={`h-10 w-10 rounded-xl bg-royal-50 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform`}>
                 <Icon className="h-5 w-5 text-royal-600" />
               </div>
-              <p className="font-semibold text-ink-900 text-sm group-hover:text-royal-600 transition-colors">{a.label}</p>
-              <p className="text-xs text-ink-400 mt-0.5">{a.desc}</p>
+              <p className="font-semibold text-fg text-sm group-hover:text-royal-600 transition-colors">{a.label}</p>
+              <p className="text-xs text-fg-faint mt-0.5">{a.desc}</p>
             </div>
           );
         })}
@@ -99,7 +99,7 @@ export function StudentDashboard() {
           {/* Upcoming Events */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-ink-900 font-display">Upcoming Department Events</h2>
+              <h2 className="text-lg font-bold text-fg font-display">Upcoming Department Events</h2>
               <button onClick={() => navigate('/events')} className="text-sm font-semibold text-royal-600 hover:text-royal-700">
                 View all ({events.length})
               </button>
@@ -114,13 +114,13 @@ export function StudentDashboard() {
           {/* My Registrations */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-ink-900 font-display">My Registrations</h2>
+              <h2 className="text-lg font-bold text-fg font-display">My Registrations</h2>
               <button onClick={() => navigate('/my-events')} className="text-sm font-semibold text-royal-600 hover:text-royal-700">
                 View all ({registrations.length})
               </button>
             </div>
             {myRegistrations.length === 0 ? (
-              <div className="bg-white rounded-2xl border border-ink-200/70 p-8 text-center text-ink-400 text-sm">
+              <div className="bg-surface rounded-2xl border border-border/70 p-8 text-center text-fg-faint text-sm">
                 No active registrations found. Browse events to register!
               </div>
             ) : (
@@ -132,7 +132,7 @@ export function StudentDashboard() {
                     <div
                       key={r.id}
                       onClick={() => navigate(`/events/${event?.id || 'ai-bootcamp'}`)}
-                      className="bg-white rounded-2xl border border-ink-200/70 p-4 flex items-center gap-4 cursor-pointer hover:shadow-float transition-all"
+                      className="bg-surface rounded-2xl border border-border/70 p-4 flex items-center gap-4 cursor-pointer hover:shadow-float transition-all"
                     >
                       <div
                         className={`h-12 w-12 rounded-xl bg-gradient-to-br ${
@@ -142,11 +142,11 @@ export function StudentDashboard() {
                         {community?.code || 'CH'}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-ink-900 truncate">{event?.title || 'Department Event'}</p>
-                        <p className="text-xs text-ink-500 flex items-center gap-2 mt-0.5">
-                          <CalendarDays className="h-3.5 w-3.5 text-ink-400" />
+                        <p className="font-semibold text-fg truncate">{event?.title || 'Department Event'}</p>
+                        <p className="text-xs text-fg-muted flex items-center gap-2 mt-0.5">
+                          <CalendarDays className="h-3.5 w-3.5 text-fg-faint" />
                           {event?.date ? new Date(event.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'Upcoming'}
-                          <Clock className="h-3.5 w-3.5 ml-1 text-ink-400" />
+                          <Clock className="h-3.5 w-3.5 ml-1 text-fg-faint" />
                           {event?.time || 'Day Event'}
                         </p>
                       </div>
@@ -162,10 +162,10 @@ export function StudentDashboard() {
         {/* Sidebar Widgets */}
         <div className="space-y-8">
           {/* Calendar Widget */}
-          <div className="bg-white rounded-2xl border border-ink-200/70 p-5 shadow-soft">
-            <h3 className="font-bold text-ink-900 text-base mb-3 font-display">Campus Calendar</h3>
-            <p className="text-xs font-semibold text-ink-500 mb-3">{today.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
-            <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-ink-400 mb-1">
+          <div className="bg-surface rounded-2xl border border-border/70 p-5 shadow-soft">
+            <h3 className="font-bold text-fg text-base mb-3 font-display">Campus Calendar</h3>
+            <p className="text-xs font-semibold text-fg-muted mb-3">{today.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
+            <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-fg-faint mb-1">
               {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
                 <span key={i}>{d}</span>
               ))}
@@ -181,8 +181,8 @@ export function StudentDashboard() {
                       isToday
                         ? 'bg-royal-600 text-white font-bold'
                         : isThisMonth(d)
-                        ? 'text-ink-700 hover:bg-ink-100'
-                        : 'text-ink-300'
+                        ? 'text-fg-secondary hover:bg-surface-hover'
+                        : 'text-fg-faint'
                     }`}
                   >
                     {isThisMonth(d) ? d : ''}
@@ -194,9 +194,9 @@ export function StudentDashboard() {
           </div>
 
           {/* Announcements */}
-          <div className="bg-white rounded-2xl border border-ink-200/70 p-5 shadow-soft">
+          <div className="bg-surface rounded-2xl border border-border/70 p-5 shadow-soft">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-ink-900 text-base font-display">Announcements</h3>
+              <h3 className="font-bold text-fg text-base font-display">Announcements</h3>
               <button onClick={() => navigate('/announcements')} className="text-xs font-semibold text-royal-600 hover:text-royal-700">
                 View all
               </button>
@@ -210,8 +210,8 @@ export function StudentDashboard() {
                       <Megaphone className="h-4 w-4" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold text-ink-900 line-clamp-1">{a.title}</p>
-                      <p className="text-[11px] text-ink-400 mt-0.5">{a.time} · {community?.code || 'Dept'}</p>
+                      <p className="text-xs font-semibold text-fg line-clamp-1">{a.title}</p>
+                      <p className="text-[11px] text-fg-faint mt-0.5">{a.time} · {community?.code || 'Dept'}</p>
                     </div>
                   </div>
                 );

@@ -66,7 +66,7 @@ export function Scanner() {
     <div className="max-w-xl mx-auto animate-fade-in space-y-6">
       <PageHeader title="Desk QR Scanner" subtitle="Scan student QR pass or enter registration ID to record attendance." />
 
-      <div className="bg-white rounded-2xl border border-ink-200/70 p-6 shadow-soft space-y-6">
+      <div className="bg-surface rounded-2xl border border-border/70 p-6 shadow-soft space-y-6">
         {/* Scanner Viewport */}
         <div className="relative aspect-square max-w-sm mx-auto rounded-2xl bg-ink-950 overflow-hidden shadow-md">
           <div
@@ -100,13 +100,13 @@ export function Scanner() {
         </Button>
 
         {/* Manual Lookup */}
-        <form onSubmit={handleManualSubmit} className="flex gap-2 pt-2 border-t border-ink-100">
+        <form onSubmit={handleManualSubmit} className="flex gap-2 pt-2 border-t border-border">
           <input
             type="text"
             placeholder="Enter Reg ID (e.g. REG-2026-001) or Roll No."
             value={manualCode}
             onChange={(e) => setManualCode(e.target.value)}
-            className="flex-1 px-3.5 py-2.5 rounded-xl border border-ink-200 bg-ink-50 text-xs font-mono outline-none focus:border-royal-500 focus:bg-white"
+            className="flex-1 px-3.5 py-2.5 rounded-xl border border-border bg-surface-muted text-xs font-mono outline-none focus:border-royal-500 focus:bg-surface"
           />
           <Button type="submit" variant="secondary" size="sm">
             <Search className="h-4 w-4" /> Verify
@@ -127,29 +127,29 @@ export function Scanner() {
                 </div>
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-ink-50 border border-ink-100 space-y-2 text-xs">
-              <div className="flex justify-between"><span className="text-ink-500">Student</span><span className="font-bold text-ink-900">{scannedResult.name}</span></div>
-              <div className="flex justify-between"><span className="text-ink-500">Roll Number</span><span className="font-mono font-bold text-ink-900">{scannedResult.roll}</span></div>
-              <div className="flex justify-between"><span className="text-ink-500">Event</span><span className="font-semibold text-ink-800">{scannedResult.event}</span></div>
-              <div className="flex justify-between"><span className="text-ink-500">Pass Code</span><span className="font-mono font-bold text-ink-900">{scannedResult.regId}</span></div>
+            <div className="p-4 rounded-xl bg-surface-muted border border-border space-y-2 text-xs">
+              <div className="flex justify-between"><span className="text-fg-muted">Student</span><span className="font-bold text-fg">{scannedResult.name}</span></div>
+              <div className="flex justify-between"><span className="text-fg-muted">Roll Number</span><span className="font-mono font-bold text-fg">{scannedResult.roll}</span></div>
+              <div className="flex justify-between"><span className="text-fg-muted">Event</span><span className="font-semibold text-fg">{scannedResult.event}</span></div>
+              <div className="flex justify-between"><span className="text-fg-muted">Pass Code</span><span className="font-mono font-bold text-fg">{scannedResult.regId}</span></div>
             </div>
           </div>
         )}
 
         {/* Recent verified desk records */}
-        <div className="pt-4 border-t border-ink-100">
-          <p className="text-xs font-bold text-ink-700 mb-3">Recent Verified Check-ins</p>
+        <div className="pt-4 border-t border-border">
+          <p className="text-xs font-bold text-fg-secondary mb-3">Recent Verified Check-ins</p>
           <div className="space-y-2">
             {presentList.slice(0, 3).map((r) => {
               const event = events.find((e) => e.id === r.eventId);
               return (
-                <div key={r.id} className="flex items-center gap-3 p-2.5 rounded-xl bg-ink-50 border border-ink-100/60 text-xs">
+                <div key={r.id} className="flex items-center gap-3 p-2.5 rounded-xl bg-surface-muted border border-border/60 text-xs">
                   <div className="h-7 w-7 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
                     <CheckCircle2 className="h-4 w-4" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-ink-900 truncate">{r.studentName}</p>
-                    <p className="text-[11px] text-ink-400">{r.rollNumber} · {event?.title || r.eventId}</p>
+                    <p className="font-semibold text-fg truncate">{r.studentName}</p>
+                    <p className="text-[11px] text-fg-faint">{r.rollNumber} · {event?.title || r.eventId}</p>
                   </div>
                   <StatusBadge color="emerald">Present</StatusBadge>
                 </div>

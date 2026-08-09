@@ -34,22 +34,22 @@ export function MyEvents() {
     <div className="animate-fade-in space-y-6">
       <PageHeader title="My Passbook" subtitle="Your active event registrations, QR entry passes, and verified attendance records." />
 
-      <div className="flex gap-2 border-b border-ink-200">
+      <div className="flex gap-2 border-b border-border">
         {tabs.map((t) => (
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
             className={`px-4 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors ${
-              tab === t.id ? 'border-royal-600 text-royal-700' : 'border-transparent text-ink-500 hover:text-ink-700'
+              tab === t.id ? 'border-royal-600 text-royal-700' : 'border-transparent text-fg-muted hover:text-fg-secondary'
             }`}
           >
-            {t.label} <span className="text-ink-400 font-normal">({t.count})</span>
+            {t.label} <span className="text-fg-faint font-normal">({t.count})</span>
           </button>
         ))}
       </div>
 
       {list.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-ink-200/70 p-12 text-center text-ink-400 text-sm">
+        <div className="bg-surface rounded-2xl border border-border/70 p-12 text-center text-fg-faint text-sm">
           No {tab} registrations found.
         </div>
       ) : (
@@ -60,7 +60,7 @@ export function MyEvents() {
             const attendance = reg.attendanceStatus || (e.id === 'web-dev-workshop' ? 'Present' : 'Registered');
 
             return (
-              <div key={e.id} className="bg-white rounded-2xl border border-ink-200/70 p-5 shadow-soft hover:shadow-float transition-all">
+              <div key={e.id} className="bg-surface rounded-2xl border border-border/70 p-5 shadow-soft hover:shadow-float transition-all">
                 <div className="flex flex-col sm:flex-row gap-5">
                   <div
                     className={`h-24 w-full sm:w-32 rounded-xl bg-gradient-to-br ${
@@ -72,18 +72,18 @@ export function MyEvents() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <h3 className="font-bold text-ink-900 text-base">{e.title}</h3>
-                        <p className="text-xs text-ink-500 mt-1 flex flex-wrap gap-x-3 gap-y-1">
+                        <h3 className="font-bold text-fg text-base">{e.title}</h3>
+                        <p className="text-xs text-fg-muted mt-1 flex flex-wrap gap-x-3 gap-y-1">
                           <span className="flex items-center gap-1">
-                            <CalendarDays className="h-3.5 w-3.5 text-ink-400" />
+                            <CalendarDays className="h-3.5 w-3.5 text-fg-faint" />
                             {new Date(e.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                           </span>
                           <span className="flex items-center gap-1">
-                            <Clock className="h-3.5 w-3.5 text-ink-400" />
+                            <Clock className="h-3.5 w-3.5 text-fg-faint" />
                             {e.time}
                           </span>
                           <span className="flex items-center gap-1">
-                            <MapPin className="h-3.5 w-3.5 text-ink-400" />
+                            <MapPin className="h-3.5 w-3.5 text-fg-faint" />
                             {e.venue}
                           </span>
                         </p>
@@ -97,9 +97,9 @@ export function MyEvents() {
                       )}
                     </div>
 
-                    <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-ink-400">
+                    <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-fg-faint">
                       <span>
-                        Reg ID: <strong className="font-mono text-ink-700">{reg.id}</strong>
+                        Reg ID: <strong className="font-mono text-fg-secondary">{reg.id}</strong>
                       </span>
                       <span>·</span>
                       <span>
@@ -107,7 +107,7 @@ export function MyEvents() {
                       </span>
                     </div>
 
-                    <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-ink-100">
+                    <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-border">
                       <Button size="sm" variant="secondary" onClick={() => navigate(`/qr/${reg.id}`)}>
                         <QrCode className="h-4 w-4" /> View QR Entry Pass
                       </Button>

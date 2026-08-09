@@ -53,7 +53,7 @@ export function EventCard({ event }) {
   return (
     <div
       onClick={() => navigate(`/events/${event.id}`)}
-      className="group bg-white rounded-2xl border border-ink-200/70 shadow-soft overflow-hidden cursor-pointer hover:shadow-float hover:border-ink-300 hover:-translate-y-0.5 transition-all duration-200"
+      className="group bg-surface rounded-2xl border border-border/70 shadow-soft overflow-hidden cursor-pointer hover:shadow-float hover:border-fg-faint/40 hover:-translate-y-0.5 transition-all duration-200"
     >
       <Poster event={event} className="h-32" />
       <div className="p-5">
@@ -61,37 +61,37 @@ export function EventCard({ event }) {
           <StatusBadge color={community?.color || 'ink'}>{community?.code}</StatusBadge>
           <StatusBadge color={statusColor(event.status)}>{event.status}</StatusBadge>
         </div>
-        <h3 className="font-semibold text-ink-900 group-hover:text-royal-700 transition-colors line-clamp-1">
+        <h3 className="font-semibold text-fg group-hover:text-royal-700 transition-colors line-clamp-1">
           {event.title}
         </h3>
-        <div className="mt-3 space-y-1.5 text-sm text-ink-500">
+        <div className="mt-3 space-y-1.5 text-sm text-fg-muted">
           <div className="flex items-center gap-2">
-            <CalendarDays className="h-4 w-4 text-ink-400 flex-shrink-0" />
+            <CalendarDays className="h-4 w-4 text-fg-faint flex-shrink-0" />
             <span className="truncate">
               {new Date(event.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-ink-400 flex-shrink-0" />
+            <Clock className="h-4 w-4 text-fg-faint flex-shrink-0" />
             <span className="truncate">{event.time}</span>
           </div>
           <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-ink-400 flex-shrink-0" />
+            <MapPin className="h-4 w-4 text-fg-faint flex-shrink-0" />
             <span className="truncate">{event.venue}</span>
           </div>
         </div>
-        <div className="mt-4 pt-4 border-t border-ink-100">
-          <div className="flex items-center justify-between text-xs text-ink-400 mb-1.5">
+        <div className="mt-4 pt-4 border-t border-border">
+          <div className="flex items-center justify-between text-xs text-fg-faint mb-1.5">
             <span className="flex items-center gap-1">
               <Users className="h-3.5 w-3.5" />
               {event.seatsFilled}/{event.seatsTotal} seats
             </span>
             <span>{remaining} left</span>
           </div>
-          <div className="h-1.5 bg-ink-100 rounded-full overflow-hidden">
+          <div className="h-1.5 bg-surface-hover rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-300 ${
-                pct >= 100 ? 'bg-ink-400' : pct >= 80 ? 'bg-amber-500' : 'bg-royal-500'
+                pct >= 100 ? 'bg-fg-faint' : pct >= 80 ? 'bg-amber-500' : 'bg-royal-500'
               }`}
               style={{ width: `${Math.min(100, pct)}%` }}
             />

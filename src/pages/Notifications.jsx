@@ -13,16 +13,16 @@ export function Notifications() {
 
       <div className="space-y-3">
         {notifications.map((n) => (
-          <div key={n.id} className="bg-white rounded-2xl border border-ink-200/70 p-5 shadow-soft hover:shadow-float transition-all flex items-start gap-4">
+          <div key={n.id} className="bg-surface rounded-2xl border border-border/70 p-5 shadow-soft hover:shadow-float transition-all flex items-start gap-4">
             <div className="h-10 w-10 rounded-xl bg-royal-50 flex items-center justify-center flex-shrink-0 text-royal-600">
               <Bell className="h-5 w-5" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-ink-900 text-sm">{n.title}</h3>
-                <span className="text-xs text-ink-400 font-medium">{n.time}</span>
+                <h3 className="font-bold text-fg text-sm">{n.title}</h3>
+                <span className="text-xs text-fg-faint font-medium">{n.time}</span>
               </div>
-              <p className="text-xs text-ink-600 mt-1 leading-relaxed">{n.message}</p>
+              <p className="text-xs text-fg-secondary mt-1 leading-relaxed">{n.message}</p>
             </div>
           </div>
         ))}

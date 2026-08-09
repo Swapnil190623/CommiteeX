@@ -22,7 +22,7 @@ export function AppShell({ children, role, setRole }) {
   const cfg = roleConfig[role] || roleConfig.student;
 
   return (
-    <div className="min-h-screen bg-ink-50 flex flex-col lg:flex-row">
+    <div className="min-h-screen bg-surface-muted flex flex-col lg:flex-row">
       {/* Desktop Sidebar */}
       <div className="hidden lg:block">
         <Sidebar role={role} onSwitchRole={handleSwitchRole} />
@@ -35,7 +35,7 @@ export function AppShell({ children, role, setRole }) {
             className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
             onClick={() => setMobileNavOpen(false)}
           />
-          <div className="relative z-10 w-64 max-w-full bg-white h-full shadow-2xl flex flex-col">
+          <div className="relative z-10 w-64 max-w-full bg-surface h-full shadow-2xl flex flex-col">
             <Sidebar
               role={role}
               onSwitchRole={handleSwitchRole}
@@ -55,7 +55,7 @@ export function AppShell({ children, role, setRole }) {
         />
 
         {/* Mobile secondary navigation pill bar */}
-        <div className="lg:hidden flex gap-1.5 overflow-x-auto px-4 py-2.5 bg-white border-b border-ink-200/70 scrollbar-none">
+        <div className="lg:hidden flex gap-1.5 overflow-x-auto px-4 py-2.5 bg-surface border-b border-border/70 scrollbar-none">
           {cfg.items.map((item) => {
             const Icon = item.icon;
             const active = location.pathname === item.path;
@@ -66,7 +66,7 @@ export function AppShell({ children, role, setRole }) {
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${
                   active
                     ? 'bg-royal-50 text-royal-700 font-semibold shadow-xs'
-                    : 'text-ink-600 bg-ink-50 hover:bg-ink-100'
+                    : 'text-fg-secondary bg-surface-muted hover:bg-surface-hover'
                 }`}
               >
                 <Icon className="h-3.5 w-3.5" />
@@ -76,7 +76,7 @@ export function AppShell({ children, role, setRole }) {
           })}
           <button
             onClick={handleSwitchRole}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap text-ink-500 bg-ink-50 hover:bg-ink-100"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap text-fg-muted bg-surface-muted hover:bg-surface-hover"
           >
             <LogOut className="h-3.5 w-3.5" />
             Switch

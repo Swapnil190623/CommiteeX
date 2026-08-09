@@ -17,7 +17,7 @@ export function CommunityCard({ community }) {
   return (
     <div
       onClick={() => navigate(`/communities/${community.id}`)}
-      className="group bg-white rounded-2xl border border-ink-200/70 shadow-soft overflow-hidden cursor-pointer hover:shadow-float hover:border-ink-300 hover:-translate-y-0.5 transition-all duration-200"
+      className="group bg-surface rounded-2xl border border-border/70 shadow-soft overflow-hidden cursor-pointer hover:shadow-float hover:border-fg-faint/40 hover:-translate-y-0.5 transition-all duration-200"
     >
       <div className={`relative h-24 bg-gradient-to-br ${c.gradient}`}>
         <div
@@ -36,9 +36,9 @@ export function CommunityCard({ community }) {
         </div>
       </div>
       <div className="p-5">
-        <h3 className="font-semibold text-ink-900 group-hover:text-royal-700 transition-colors">{community.name}</h3>
-        <p className="text-sm text-ink-500 mt-1 line-clamp-2">{community.tagline}</p>
-        <div className="mt-4 flex items-center gap-4 text-xs text-ink-400">
+        <h3 className="font-semibold text-fg group-hover:text-royal-700 transition-colors">{community.name}</h3>
+        <p className="text-sm text-fg-muted mt-1 line-clamp-2">{community.tagline}</p>
+        <div className="mt-4 flex items-center gap-4 text-xs text-fg-faint">
           <span className="flex items-center gap-1.5">
             <CalendarDays className="h-3.5 w-3.5" />
             {community.upcomingEventIds?.length || 0} events

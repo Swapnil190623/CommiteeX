@@ -10,7 +10,7 @@ export function StatCard({ icon: Icon, label, value, trend, color = 'royal' }) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-ink-200/70 p-5 shadow-soft hover:shadow-float transition-all">
+    <div className="bg-surface rounded-2xl border border-border/70 p-5 shadow-soft hover:shadow-float transition-all">
       <div className="flex items-center justify-between">
         <div className={`h-11 w-11 rounded-xl ${colorStyles[color] || colorStyles.royal} flex items-center justify-center`}>
           {Icon && <Icon className="h-5 w-5" />}
@@ -22,8 +22,8 @@ export function StatCard({ icon: Icon, label, value, trend, color = 'royal' }) {
         )}
       </div>
       <div className="mt-4">
-        <p className="text-2xl font-bold text-ink-900 tracking-tight">{value}</p>
-        <p className="text-sm font-medium text-ink-500 mt-1">{label}</p>
+        <p className="text-2xl font-bold text-fg tracking-tight">{value}</p>
+        <p className="text-sm font-medium text-fg-muted mt-1">{label}</p>
       </div>
     </div>
   );

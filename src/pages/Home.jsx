@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GraduationCap, UserCog, Shield, Users, ArrowRight, Sparkles, CalendarDays, Megaphone, QrCode } from 'lucide-react';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 const roles = [
   {
@@ -43,7 +44,7 @@ export function Home({ setRole }) {
   }
 
   return (
-    <div className="min-h-screen bg-ink-50 flex flex-col lg:flex-row">
+    <div className="min-h-screen bg-surface-muted flex flex-col lg:flex-row">
       {/* Left Brand Panel */}
       <div className="lg:w-1/2 relative overflow-hidden bg-ink-950 text-white flex flex-col justify-between p-8 sm:p-12 lg:p-16">
         <div
@@ -106,10 +107,13 @@ export function Home({ setRole }) {
       </div>
 
       {/* Right Role Selector */}
-      <div className="lg:w-1/2 flex items-center justify-center p-6 sm:p-10 lg:p-16">
+      <div className="lg:w-1/2 flex items-center justify-center p-6 sm:p-10 lg:p-16 relative">
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8">
+          <ThemeToggle />
+        </div>
         <div className="w-full max-w-md animate-fade-in">
-          <h2 className="text-2xl sm:text-3xl font-bold text-ink-900 tracking-tight font-display">Choose a role to explore</h2>
-          <p className="text-ink-500 mt-2 text-sm sm:text-base">Each role opens a tailored dashboard. You can switch roles anytime.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-fg tracking-tight font-display">Choose a role to explore</h2>
+          <p className="text-fg-muted mt-2 text-sm sm:text-base">Each role opens a tailored dashboard. You can switch roles anytime.</p>
 
           <div className="mt-8 space-y-3.5">
             {roles.map((r) => {
@@ -123,15 +127,15 @@ export function Home({ setRole }) {
                   className={`w-full flex items-center gap-4 p-4 rounded-2xl border text-left transition-all duration-200 ${
                     active
                       ? 'border-royal-500 bg-royal-50/60 shadow-float ring-2 ring-royal-500/20'
-                      : 'border-ink-200 bg-white hover:border-ink-300 hover:shadow-soft'
+                      : 'border-border bg-surface hover:border-fg-faint/40 hover:shadow-soft'
                   }`}
                 >
                   <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${r.gradient} flex items-center justify-center flex-shrink-0 shadow-sm`}>
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-ink-900">{r.label}</p>
-                    <p className="text-xs sm:text-sm text-ink-500 mt-0.5 leading-snug">{r.desc}</p>
+                    <p className="font-semibold text-fg">{r.label}</p>
+                    <p className="text-xs sm:text-sm text-fg-muted mt-0.5 leading-snug">{r.desc}</p>
                   </div>
                   {active && <ArrowRight className="h-5 w-5 text-royal-600 flex-shrink-0" />}
                 </button>

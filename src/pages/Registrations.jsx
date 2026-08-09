@@ -55,23 +55,23 @@ export function Registrations() {
       />
 
       {/* Filters Toolbar */}
-      <div className="bg-white rounded-2xl border border-ink-200/70 p-4 shadow-soft">
+      <div className="bg-surface rounded-2xl border border-border/70 p-4 shadow-soft">
         <div className="flex flex-col lg:flex-row gap-3">
-          <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-ink-50 flex-1 border border-ink-200/50">
-            <Search className="h-4 w-4 text-ink-400 flex-shrink-0" />
+          <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surface-muted flex-1 border border-border/50">
+            <Search className="h-4 w-4 text-fg-faint flex-shrink-0" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by student name or roll number..."
-              className="bg-transparent outline-none text-sm flex-1 text-ink-800 placeholder:text-ink-400"
+              className="bg-transparent outline-none text-sm flex-1 text-fg placeholder:text-fg-faint"
             />
           </div>
           <div className="flex flex-wrap gap-2">
             <select
               value={eventFilter}
               onChange={(e) => setEventFilter(e.target.value)}
-              className="px-3.5 py-2 rounded-xl bg-ink-50 text-sm text-ink-700 border border-ink-200/50 outline-none cursor-pointer font-medium"
+              className="px-3.5 py-2 rounded-xl bg-surface-muted text-sm text-fg border border-border/50 outline-none cursor-pointer font-medium"
             >
               <option value="all">All Events</option>
               {events.map((e) => (
@@ -83,7 +83,7 @@ export function Registrations() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3.5 py-2 rounded-xl bg-ink-50 text-sm text-ink-700 border border-ink-200/50 outline-none cursor-pointer font-medium"
+              className="px-3.5 py-2 rounded-xl bg-surface-muted text-sm text-fg border border-border/50 outline-none cursor-pointer font-medium"
             >
               <option value="all">Any Status</option>
               <option value="Registered">Registered</option>
@@ -92,7 +92,7 @@ export function Registrations() {
             <select
               value={attFilter}
               onChange={(e) => setAttFilter(e.target.value)}
-              className="px-3.5 py-2 rounded-xl bg-ink-50 text-sm text-ink-700 border border-ink-200/50 outline-none cursor-pointer font-medium"
+              className="px-3.5 py-2 rounded-xl bg-surface-muted text-sm text-fg border border-border/50 outline-none cursor-pointer font-medium"
             >
               <option value="all">Any Attendance</option>
               <option value="Present">Present</option>
@@ -103,11 +103,11 @@ export function Registrations() {
       </div>
 
       {/* Registrations Table */}
-      <div className="bg-white rounded-2xl border border-ink-200/70 overflow-hidden shadow-soft">
+      <div className="bg-surface rounded-2xl border border-border/70 overflow-hidden shadow-soft">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-ink-100 bg-ink-50/70 text-ink-500 font-semibold text-xs uppercase">
+              <tr className="border-b border-border bg-surface-muted/70 text-fg-muted font-semibold text-xs uppercase">
                 <th className="px-5 py-3.5">Student</th>
                 <th className="px-5 py-3.5">Department</th>
                 <th className="px-5 py-3.5">Year</th>
@@ -124,17 +124,17 @@ export function Registrations() {
                 const isPresent = r.attendanceStatus === 'Present';
 
                 return (
-                  <tr key={r.id} className="hover:bg-ink-50/50 transition-colors">
+                  <tr key={r.id} className="hover:bg-surface-muted/50 transition-colors">
                     <td className="px-5 py-3.5">
-                      <p className="font-semibold text-ink-900">{r.studentName}</p>
-                      <p className="text-xs text-ink-400 font-mono">{r.rollNumber}</p>
+                      <p className="font-semibold text-fg">{r.studentName}</p>
+                      <p className="text-xs text-fg-faint font-mono">{r.rollNumber}</p>
                     </td>
-                    <td className="px-5 py-3.5 text-ink-600 text-xs">{r.department}</td>
-                    <td className="px-5 py-3.5 text-ink-600 font-semibold text-xs">{r.year}</td>
+                    <td className="px-5 py-3.5 text-fg-secondary text-xs">{r.department}</td>
+                    <td className="px-5 py-3.5 text-fg-secondary font-semibold text-xs">{r.year}</td>
                     <td className="px-5 py-3.5">
                       <div className="flex items-center gap-2">
                         {community && <StatusBadge color={community.color}>{community.code}</StatusBadge>}
-                        <span className="text-ink-700 text-xs truncate max-w-[140px] font-medium">{event?.title || r.eventId}</span>
+                        <span className="text-fg-secondary text-xs truncate max-w-[140px] font-medium">{event?.title || r.eventId}</span>
                       </div>
                     </td>
                     <td className="px-5 py-3.5">
@@ -148,7 +148,7 @@ export function Registrations() {
                           <CheckCircle2 className="h-3.5 w-3.5" /> Present
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 text-ink-400 text-xs font-medium">
+                        <span className="inline-flex items-center gap-1 text-fg-faint text-xs font-medium">
                           <Clock className="h-3.5 w-3.5" /> Not checked in
                         </span>
                       )}
@@ -176,7 +176,7 @@ export function Registrations() {
           </table>
         </div>
         {filtered.length === 0 && (
-          <div className="p-12 text-center text-ink-400 text-sm">No registrations match your search filters.</div>
+          <div className="p-12 text-center text-fg-faint text-sm">No registrations match your search filters.</div>
         )}
       </div>
     </div>

@@ -27,15 +27,15 @@ export function CoordinatorDashboard() {
   return (
     <div className="animate-fade-in space-y-8">
       {/* Top Banner & Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-ink-200/70 shadow-soft">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface p-6 rounded-2xl border border-border/70 shadow-soft">
         <div>
           <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-royal-50 text-royal-700">
             Coordinator Console · {myCommunity.code}
           </span>
-          <h1 className="text-2xl font-bold text-ink-900 mt-2 tracking-tight font-display">
+          <h1 className="text-2xl font-bold text-fg mt-2 tracking-tight font-display">
             Welcome back, {currentUser.name.split(' ')[0]} 👋
           </h1>
-          <p className="text-ink-500 text-sm mt-1">Manage {myCommunity.name} events, registrations, and your team.</p>
+          <p className="text-fg-muted text-sm mt-1">Manage {myCommunity.name} events, registrations, and your team.</p>
         </div>
         <Button onClick={() => navigate('/events')} className="shadow-md">
           <Plus className="h-4 w-4" /> Create New Event
@@ -63,13 +63,13 @@ export function CoordinatorDashboard() {
             <div
               key={a.label}
               onClick={() => navigate(a.path)}
-              className="bg-white rounded-2xl border border-ink-200/70 p-4 cursor-pointer hover:shadow-float hover:border-ink-300 transition-all group"
+              className="bg-surface rounded-2xl border border-border/70 p-4 cursor-pointer hover:shadow-float hover:border-fg-faint/40 transition-all group"
             >
               <div className="h-10 w-10 rounded-xl bg-royal-50 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform text-royal-600">
                 <Icon className="h-5 w-5" />
               </div>
-              <p className="font-semibold text-ink-900 text-sm group-hover:text-royal-600 transition-colors">{a.label}</p>
-              <ArrowRight className="h-4 w-4 text-ink-300 mt-2" />
+              <p className="font-semibold text-fg text-sm group-hover:text-royal-600 transition-colors">{a.label}</p>
+              <ArrowRight className="h-4 w-4 text-fg-faint mt-2" />
             </div>
           );
         })}
@@ -80,7 +80,7 @@ export function CoordinatorDashboard() {
         <div className="lg:col-span-2 space-y-8">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-ink-900 font-display">{myCommunity.code} Events</h2>
+              <h2 className="text-lg font-bold text-fg font-display">{myCommunity.code} Events</h2>
               <button onClick={() => navigate('/events')} className="text-sm font-semibold text-royal-600 hover:text-royal-700">
                 View all
               </button>
@@ -92,17 +92,17 @@ export function CoordinatorDashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-ink-200/70 p-6 shadow-soft">
-            <h2 className="text-lg font-bold text-ink-900 font-display mb-4">Recent Desk Activity</h2>
+          <div className="bg-surface rounded-2xl border border-border/70 p-6 shadow-soft">
+            <h2 className="text-lg font-bold text-fg font-display mb-4">Recent Desk Activity</h2>
             <div className="space-y-4">
               {recentActivity.slice(0, 5).map((a) => (
                 <div key={a.id} className="flex items-start gap-3">
-                  <div className="h-8 w-8 rounded-lg bg-ink-100 flex items-center justify-center flex-shrink-0 text-ink-500">
+                  <div className="h-8 w-8 rounded-lg bg-surface-hover flex items-center justify-center flex-shrink-0 text-fg-muted">
                     <Activity className="h-4 w-4" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm text-ink-800">{a.text}</p>
-                    <p className="text-xs text-ink-400 mt-0.5">{a.time}</p>
+                    <p className="text-sm text-fg">{a.text}</p>
+                    <p className="text-xs text-fg-faint mt-0.5">{a.time}</p>
                   </div>
                 </div>
               ))}
@@ -113,8 +113,8 @@ export function CoordinatorDashboard() {
         {/* Sidebar Focus & Overview */}
         <div className="space-y-8">
           {todayEvent && (
-            <div className="bg-white rounded-2xl border border-ink-200/70 p-5 shadow-soft">
-              <h3 className="font-bold text-ink-900 text-base mb-3 font-display">Active Desk Focus</h3>
+            <div className="bg-surface rounded-2xl border border-border/70 p-5 shadow-soft">
+              <h3 className="font-bold text-fg text-base mb-3 font-display">Active Desk Focus</h3>
               <div className={`p-4 rounded-xl bg-gradient-to-br ${myCommunity.gradient || 'from-royal-500 to-royal-700'} text-white shadow-xs`}>
                 <p className="text-white/80 text-xs font-semibold">Priority Event</p>
                 <p className="font-bold mt-1 text-base">{todayEvent.title}</p>
@@ -133,15 +133,15 @@ export function CoordinatorDashboard() {
             </div>
           )}
 
-          <div className="bg-white rounded-2xl border border-ink-200/70 p-5 shadow-soft">
-            <h3 className="font-bold text-ink-900 text-base mb-3 font-display">Community Overview</h3>
+          <div className="bg-surface rounded-2xl border border-border/70 p-5 shadow-soft">
+            <h3 className="font-bold text-fg text-base mb-3 font-display">Community Overview</h3>
             <div className="flex items-center gap-3 mb-4">
               <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${myCommunity.gradient || 'from-royal-500 to-royal-700'} flex items-center justify-center text-white font-bold text-sm shadow-xs`}>
                 {myCommunity.code}
               </div>
               <div>
-                <p className="font-semibold text-ink-900">{myCommunity.name}</p>
-                <p className="text-xs text-ink-400">{myCommunity.members || 248} active members</p>
+                <p className="font-semibold text-fg">{myCommunity.name}</p>
+                <p className="text-xs text-fg-faint">{myCommunity.members || 248} active members</p>
               </div>
             </div>
             <Button variant="secondary" size="sm" className="w-full" onClick={() => navigate('/team')}>

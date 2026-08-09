@@ -81,15 +81,15 @@ export function Sidebar({ role, onSwitchRole, onItemClick }) {
   }
 
   return (
-    <aside className="w-64 flex flex-col border-r border-ink-200/70 bg-white sticky top-0 h-screen">
+    <aside className="w-64 flex flex-col border-r border-border/70 bg-surface sticky top-0 h-screen">
       <div className="px-6 py-6">
         <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => navigate('/dashboard')}>
           <div className="h-9 w-9 rounded-xl bg-royal-600 flex items-center justify-center shadow-sm">
             <GraduationCap className="h-5 w-5 text-white" />
           </div>
           <div>
-            <p className="font-bold text-ink-900 leading-none">CampusHub</p>
-            <p className="text-xs text-ink-400 mt-1">Department Platform</p>
+            <p className="font-bold text-fg leading-none">CampusHub</p>
+            <p className="text-xs text-fg-faint mt-1">Department Platform</p>
           </div>
         </div>
       </div>
@@ -109,17 +109,17 @@ export function Sidebar({ role, onSwitchRole, onItemClick }) {
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 active
                   ? 'bg-royal-50 text-royal-700 font-semibold'
-                  : 'text-ink-500 hover:bg-ink-100 hover:text-ink-800'
+                  : 'text-fg-muted hover:bg-surface-hover hover:text-fg'
               }`}
             >
-              <Icon className={`h-4.5 w-4.5 ${active ? 'text-royal-600' : 'text-ink-400'}`} style={{ width: 18, height: 18 }} />
+              <Icon className={`h-4.5 w-4.5 ${active ? 'text-royal-600' : 'text-fg-faint'}`} style={{ width: 18, height: 18 }} />
               {item.label}
             </button>
           );
         })}
       </nav>
 
-      <div className="px-3 py-4 border-t border-ink-200/70">
+      <div className="px-3 py-4 border-t border-border/70">
         <div className="flex items-center gap-3 px-3 py-2 mb-2">
           <div className="h-9 w-9 rounded-full bg-gradient-to-br from-royal-500 to-royal-700 flex items-center justify-center text-white text-sm font-semibold shadow-sm">
             {currentUser.name
@@ -129,17 +129,17 @@ export function Sidebar({ role, onSwitchRole, onItemClick }) {
               .join('')}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-medium text-ink-800 truncate">{currentUser.name}</p>
-            <p className="text-xs text-ink-400 flex items-center gap-1">
+            <p className="text-sm font-medium text-fg truncate">{currentUser.name}</p>
+            <p className="text-xs text-fg-faint flex items-center gap-1">
               <RoleIcon className="h-3 w-3" /> {cfg.label}
             </p>
           </div>
         </div>
         <button
           onClick={onSwitchRole}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-ink-500 hover:bg-ink-100 hover:text-ink-800 transition-all"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-fg-muted hover:bg-surface-hover hover:text-fg transition-all"
         >
-          <LogOut className="h-4 w-4 text-ink-400" />
+          <LogOut className="h-4 w-4 text-fg-faint" />
           Switch Role
         </button>
       </div>

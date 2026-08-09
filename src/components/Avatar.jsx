@@ -1,7 +1,7 @@
 import React from 'react';
 
 const colorMap = {
-  ink: 'bg-ink-200 text-ink-700',
+  ink: 'bg-surface-hover text-fg-secondary',
   royal: 'bg-royal-100 text-royal-700',
   emerald: 'bg-emerald-100 text-emerald-700',
   amber: 'bg-amber-100 text-amber-700',

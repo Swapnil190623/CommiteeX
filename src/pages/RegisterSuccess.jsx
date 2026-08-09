@@ -19,36 +19,36 @@ export function RegisterSuccess() {
         <div className="inline-flex h-16 w-16 rounded-full bg-emerald-50 items-center justify-center mb-4 animate-success-pop shadow-sm">
           <CheckCircle2 className="h-9 w-9 text-emerald-600" />
         </div>
-        <h1 className="text-2xl font-bold text-ink-900 font-display">Registration Confirmed!</h1>
-        <p className="text-ink-500 mt-2 text-sm sm:text-base">
-          You are successfully registered for <span className="font-semibold text-ink-800">{event?.title || 'Department Event'}</span>.
+        <h1 className="text-2xl font-bold text-fg font-display">Registration Confirmed!</h1>
+        <p className="text-fg-muted mt-2 text-sm sm:text-base">
+          You are successfully registered for <span className="font-semibold text-fg">{event?.title || 'Department Event'}</span>.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-ink-200/70 p-7 shadow-soft space-y-6">
+      <div className="bg-surface rounded-2xl border border-border/70 p-7 shadow-soft space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-xs text-ink-400 font-medium">Registration Pass Code</p>
-            <p className="font-mono font-bold text-ink-900 text-lg">{registrationId || 'REG-2026-001'}</p>
+            <p className="text-xs text-fg-faint font-medium">Registration Pass Code</p>
+            <p className="font-mono font-bold text-fg text-lg">{registrationId || 'REG-2026-001'}</p>
           </div>
           <StatusBadge color="emerald">Registered</StatusBadge>
         </div>
 
         {event && (
-          <div className="space-y-3 text-sm border-t border-ink-100 pt-5">
+          <div className="space-y-3 text-sm border-t border-border pt-5">
             <div className="flex items-center gap-3">
-              <CalendarDays className="h-4 w-4 text-ink-400 flex-shrink-0" />
-              <span className="text-ink-700 font-medium">
+              <CalendarDays className="h-4 w-4 text-fg-faint flex-shrink-0" />
+              <span className="text-fg-secondary font-medium">
                 {new Date(event.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <Clock className="h-4 w-4 text-ink-400 flex-shrink-0" />
-              <span className="text-ink-700 font-medium">{event.time}</span>
+              <Clock className="h-4 w-4 text-fg-faint flex-shrink-0" />
+              <span className="text-fg-secondary font-medium">{event.time}</span>
             </div>
             <div className="flex items-center gap-3">
-              <MapPin className="h-4 w-4 text-ink-400 flex-shrink-0" />
-              <span className="text-ink-700 font-medium">{event.venue}</span>
+              <MapPin className="h-4 w-4 text-fg-faint flex-shrink-0" />
+              <span className="text-fg-secondary font-medium">{event.venue}</span>
             </div>
           </div>
         )}
@@ -73,7 +73,7 @@ export function RegisterSuccess() {
         </div>
       </div>
 
-      <p className="text-center text-xs text-ink-400 mt-6">
+      <p className="text-center text-xs text-fg-faint mt-6">
         Confirmation saved to local student passbook for {currentUser.email}
       </p>
     </div>

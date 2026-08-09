@@ -86,12 +86,12 @@ export function QrPage() {
     <div className="max-w-xl mx-auto animate-fade-in py-4 space-y-6">
       <button
         onClick={() => navigate('/my-events')}
-        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-ink-500 hover:text-ink-900 transition-colors"
+        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-fg-muted hover:text-fg transition-colors"
       >
         <ArrowLeft className="h-4 w-4" /> Back to My Passbook
       </button>
 
-      <div className="bg-white rounded-2xl border border-ink-200/70 overflow-hidden shadow-soft">
+      <div className="bg-surface rounded-2xl border border-border/70 overflow-hidden shadow-soft">
         <div className={`bg-gradient-to-br ${community?.gradient || 'from-royal-500 to-royal-700'} px-6 py-5 text-white`}>
           <div className="flex items-center justify-between">
             <div>
@@ -107,27 +107,27 @@ export function QrPage() {
             <QrCodeVisual seed={registrationId} />
           </div>
 
-          <div className="space-y-3 text-sm border-t border-ink-100 pt-5">
+          <div className="space-y-3 text-sm border-t border-border pt-5">
             <div className="flex items-center justify-between">
-              <span className="text-ink-400 flex items-center gap-2"><User className="h-4 w-4" /> Student</span>
-              <span className="font-semibold text-ink-900">{currentUser.name}</span>
+              <span className="text-fg-faint flex items-center gap-2"><User className="h-4 w-4" /> Student</span>
+              <span className="font-semibold text-fg">{currentUser.name}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-ink-400 flex items-center gap-2"><Hash className="h-4 w-4" /> Roll Number</span>
-              <span className="font-mono font-bold text-ink-900">{currentUser.rollNumber}</span>
+              <span className="text-fg-faint flex items-center gap-2"><Hash className="h-4 w-4" /> Roll Number</span>
+              <span className="font-mono font-bold text-fg">{currentUser.rollNumber}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-ink-400 flex items-center gap-2"><CalendarDays className="h-4 w-4" /> Event</span>
-              <span className="font-semibold text-ink-900">{event?.title || 'AI Bootcamp 2026'}</span>
+              <span className="text-fg-faint flex items-center gap-2"><CalendarDays className="h-4 w-4" /> Event</span>
+              <span className="font-semibold text-fg">{event?.title || 'AI Bootcamp 2026'}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-ink-400 flex items-center gap-2"><QrCode className="h-4 w-4" /> Pass ID</span>
-              <span className="font-mono font-bold text-ink-900">{registrationId}</span>
+              <span className="text-fg-faint flex items-center gap-2"><QrCode className="h-4 w-4" /> Pass ID</span>
+              <span className="font-mono font-bold text-fg">{registrationId}</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-ink-50 flex items-center justify-between border border-ink-100">
-            <span className="text-sm text-ink-600 font-medium">Verification Status</span>
+          <div className="p-4 rounded-xl bg-surface-muted flex items-center justify-between border border-border">
+            <span className="text-sm text-fg-secondary font-medium">Verification Status</span>
             {attendance === 'Present' ? (
               <StatusBadge color="emerald">
                 <CheckCircle2 className="h-3.5 w-3.5" /> Present

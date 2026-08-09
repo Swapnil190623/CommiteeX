@@ -4,6 +4,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
 import { queryClient } from './lib/queryClient';
 import { AppShell } from './components/AppShell';
+import { useTheme } from './theme';
 
 import { Home } from './pages/Home';
 import { Dashboard } from './pages/Dashboard';
@@ -40,6 +41,7 @@ function persistRole(role) {
 
 export function App() {
   const [role, setRoleState] = useState(getPersistedRole);
+  const { theme } = useTheme();
 
   function setRole(r) {
     setRoleState(r);
@@ -71,7 +73,7 @@ export function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AppShell>
-        <Toaster position="top-right" richColors />
+        <Toaster position="top-right" richColors theme={theme} />
       </BrowserRouter>
     </QueryClientProvider>
   );

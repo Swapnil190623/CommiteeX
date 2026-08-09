@@ -34,23 +34,23 @@ export function Events() {
       <PageHeader title="Department Events" subtitle="Discover, filter, and register for technical bootcamps, hackathons, and challenges." />
 
       {/* Filter Toolbar */}
-      <div className="bg-white rounded-2xl border border-ink-200/70 p-4 shadow-soft">
+      <div className="bg-surface rounded-2xl border border-border/70 p-4 shadow-soft">
         <div className="flex flex-col md:flex-row gap-3">
-          <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-ink-50 flex-1 border border-ink-200/50">
-            <Search className="h-4 w-4 text-ink-400 flex-shrink-0" />
+          <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-muted flex-1 border border-border/50">
+            <Search className="h-4 w-4 text-fg-faint flex-shrink-0" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search events, topics, or tags..."
-              className="bg-transparent outline-none text-sm flex-1 text-ink-800 placeholder:text-ink-400"
+              className="bg-transparent outline-none text-sm flex-1 text-fg placeholder:text-fg-faint"
             />
           </div>
           <div className="flex gap-2">
             <select
               value={communityFilter}
               onChange={(e) => setCommunityFilter(e.target.value)}
-              className="px-3.5 py-2.5 rounded-xl bg-ink-50 text-sm text-ink-700 border border-ink-200/50 outline-none cursor-pointer font-medium"
+              className="px-3.5 py-2.5 rounded-xl bg-surface-muted text-sm text-fg border border-border/50 outline-none cursor-pointer font-medium"
             >
               <option value="all">All Communities</option>
               {communities.map((c) => (
@@ -62,7 +62,7 @@ export function Events() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3.5 py-2.5 rounded-xl bg-ink-50 text-sm text-ink-700 border border-ink-200/50 outline-none cursor-pointer font-medium"
+              className="px-3.5 py-2.5 rounded-xl bg-surface-muted text-sm text-fg border border-border/50 outline-none cursor-pointer font-medium"
             >
               <option value="all">All Statuses</option>
               {statuses.map((s) => (
@@ -75,7 +75,7 @@ export function Events() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between text-xs text-ink-400 px-1 font-medium">
+      <div className="flex items-center justify-between text-xs text-fg-faint px-1 font-medium">
         <span className="flex items-center gap-1.5">
           <SlidersHorizontal className="h-3.5 w-3.5" /> Showing {filteredEvents.length} event{filteredEvents.length === 1 ? '' : 's'}
         </span>
@@ -89,7 +89,7 @@ export function Events() {
       </div>
 
       {filteredEvents.length === 0 && (
-        <div className="bg-white rounded-2xl border border-ink-200/70 p-12 text-center text-ink-400 text-sm">
+        <div className="bg-surface rounded-2xl border border-border/70 p-12 text-center text-fg-faint text-sm">
           No events found matching your search parameters.
         </div>
       )}

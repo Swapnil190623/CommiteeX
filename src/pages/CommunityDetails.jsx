@@ -25,7 +25,7 @@ export function CommunityDetails() {
   const { data: allAnnouncements = [] } = useQuery({ queryKey: ['announcements'], queryFn: fetchAnnouncements });
 
   if (!community) {
-    return <div className="bg-white p-8 rounded-2xl text-center text-ink-500">Community loading...</div>;
+    return <div className="bg-surface p-8 rounded-2xl text-center text-fg-muted">Community loading...</div>;
   }
 
   const upcomingEvents = allEvents.filter((e) => e.communityId === community.id);
@@ -41,7 +41,7 @@ export function CommunityDetails() {
     <div className="animate-fade-in space-y-6">
       <button
         onClick={() => navigate('/communities')}
-        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-ink-500 hover:text-ink-900 transition-colors"
+        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-fg-muted hover:text-fg transition-colors"
       >
         <ArrowLeft className="h-4 w-4" /> Back to communities
       </button>
@@ -89,24 +89,24 @@ export function CommunityDetails() {
       <div className="grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {/* About */}
-          <div className="bg-white rounded-2xl border border-ink-200/70 p-6 shadow-soft">
-            <h2 className="font-bold text-ink-900 text-lg mb-3 font-display">About the Association</h2>
-            <p className="text-ink-600 leading-relaxed text-sm sm:text-base">{community.description}</p>
+          <div className="bg-surface rounded-2xl border border-border/70 p-6 shadow-soft">
+            <h2 className="font-bold text-fg text-lg mb-3 font-display">About the Association</h2>
+            <p className="text-fg-secondary leading-relaxed text-sm sm:text-base">{community.description}</p>
           </div>
 
           {/* Leadership */}
-          <div className="bg-white rounded-2xl border border-ink-200/70 p-6 shadow-soft">
-            <h2 className="font-bold text-ink-900 text-lg mb-4 font-display">Leadership Team</h2>
+          <div className="bg-surface rounded-2xl border border-border/70 p-6 shadow-soft">
+            <h2 className="font-bold text-fg text-lg mb-4 font-display">Leadership Team</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               {leadership.map((p) => {
                 const Icon = roleIcon[p.role] || Star;
                 return (
-                  <div key={p.role} className="p-4 rounded-xl bg-ink-50 text-center border border-ink-100">
+                  <div key={p.role} className="p-4 rounded-xl bg-surface-muted text-center border border-border">
                     <div className="flex justify-center mb-2">
                       <Avatar name={p.name} color={community.color || 'royal'} size="lg" />
                     </div>
-                    <p className="font-bold text-ink-900 text-sm">{p.name}</p>
-                    <p className="text-xs text-ink-500 mt-1 flex items-center justify-center gap-1 font-medium">
+                    <p className="font-bold text-fg text-sm">{p.name}</p>
+                    <p className="text-xs text-fg-muted mt-1 flex items-center justify-center gap-1 font-medium">
                       <Icon className="h-3 w-3 text-royal-600" /> {p.role}
                     </p>
                   </div>
@@ -117,15 +117,15 @@ export function CommunityDetails() {
 
           {/* Committee Members */}
           {community.committee && (
-            <div className="bg-white rounded-2xl border border-ink-200/70 p-6 shadow-soft">
-              <h2 className="font-bold text-ink-900 text-lg mb-4 font-display">Committee Members & Heads</h2>
+            <div className="bg-surface rounded-2xl border border-border/70 p-6 shadow-soft">
+              <h2 className="font-bold text-fg text-lg mb-4 font-display">Committee Members & Heads</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {community.committee.map((m) => (
-                  <div key={m.name} className="flex items-center gap-3 p-3 rounded-xl hover:bg-ink-50 transition-colors border border-ink-100/50">
+                  <div key={m.name} className="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-muted transition-colors border border-border/50">
                     <Avatar name={m.name} color={m.avatarColor || 'royal'} size="sm" />
                     <div className="min-w-0">
-                      <p className="text-sm font-semibold text-ink-900 truncate">{m.name}</p>
-                      <p className="text-xs text-ink-400">{m.role}</p>
+                      <p className="text-sm font-semibold text-fg truncate">{m.name}</p>
+                      <p className="text-xs text-fg-faint">{m.role}</p>
                     </div>
                   </div>
                 ))}
@@ -135,9 +135,9 @@ export function CommunityDetails() {
 
           {/* Community Events */}
           <div>
-            <h2 className="font-bold text-ink-900 text-lg mb-4 font-display">Community Events</h2>
+            <h2 className="font-bold text-fg text-lg mb-4 font-display">Community Events</h2>
             {upcomingEvents.length === 0 ? (
-              <div className="bg-white rounded-2xl border border-ink-200/70 p-8 text-center text-ink-400 text-sm">
+              <div className="bg-surface rounded-2xl border border-border/70 p-8 text-center text-fg-faint text-sm">
                 No events currently scheduled for this community.
               </div>
             ) : (
@@ -154,13 +154,13 @@ export function CommunityDetails() {
         <div className="space-y-8">
           {/* Faculty Mentor */}
           {community.facultyMentor && (
-            <div className="bg-white rounded-2xl border border-ink-200/70 p-6 shadow-soft">
-              <h3 className="font-bold text-ink-900 text-base mb-4 font-display">Faculty Mentor</h3>
+            <div className="bg-surface rounded-2xl border border-border/70 p-6 shadow-soft">
+              <h3 className="font-bold text-fg text-base mb-4 font-display">Faculty Mentor</h3>
               <div className="flex items-center gap-4">
                 <Avatar name={community.facultyMentor.name} color="ink" size="lg" />
                 <div>
-                  <p className="font-bold text-ink-900 text-sm sm:text-base">{community.facultyMentor.name}</p>
-                  <p className="text-xs text-ink-500 flex items-center gap-1.5 mt-0.5">
+                  <p className="font-bold text-fg text-sm sm:text-base">{community.facultyMentor.name}</p>
+                  <p className="text-xs text-fg-muted flex items-center gap-1.5 mt-0.5">
                     <GraduationCap className="h-4 w-4 text-royal-600" /> {community.facultyMentor.role}
                   </p>
                 </div>
@@ -169,17 +169,17 @@ export function CommunityDetails() {
           )}
 
           {/* Recent Announcements */}
-          <div className="bg-white rounded-2xl border border-ink-200/70 p-6 shadow-soft">
-            <h3 className="font-bold text-ink-900 text-base mb-4 font-display">Community Feed</h3>
+          <div className="bg-surface rounded-2xl border border-border/70 p-6 shadow-soft">
+            <h3 className="font-bold text-fg text-base mb-4 font-display">Community Feed</h3>
             {anns.length === 0 ? (
-              <p className="text-xs text-ink-400">No community posts yet.</p>
+              <p className="text-xs text-fg-faint">No community posts yet.</p>
             ) : (
               <div className="space-y-4">
                 {anns.map((a) => (
                   <div key={a.id} className="border-l-2 border-royal-500 pl-3">
-                    <p className="text-xs font-semibold text-ink-900">{a.title}</p>
-                    <p className="text-xs text-ink-500 mt-1">{a.body}</p>
-                    <p className="text-[11px] text-ink-400 mt-1">{a.time}</p>
+                    <p className="text-xs font-semibold text-fg">{a.title}</p>
+                    <p className="text-xs text-fg-muted mt-1">{a.body}</p>
+                    <p className="text-[11px] text-fg-faint mt-1">{a.time}</p>
                   </div>
                 ))}
               </div>
