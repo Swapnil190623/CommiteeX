@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   LayoutDashboard,
   CalendarDays,
@@ -47,6 +47,7 @@ export const roleConfig = {
       { icon: CalendarDays, label: 'Events', path: '/events' },
       { icon: Users, label: 'Communities', path: '/communities' },
       { icon: Megaphone, label: 'Announcements', path: '/announcements' },
+      { icon: Award, label: 'Certificate Studio', path: '/certificate-studio' },
     ],
   },
   admin: {
@@ -79,6 +80,12 @@ export function Sidebar({ role, onSwitchRole, onItemClick }) {
     if (path === '/dashboard') return location.pathname === '/dashboard';
     return location.pathname.startsWith(path);
   }
+
+  // #region agent log
+  useEffect(() => {
+    fetch('http://127.0.0.1:7715/ingest/69a774dc-9dd4-4874-aa14-461272b168d1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'8fb8b9'},body:JSON.stringify({sessionId:'8fb8b9',location:'Sidebar.jsx:mount',message:'Sidebar mounted',data:{role,pathname:location.pathname,navItemCount:cfg.items.length,navLabels:cfg.items.map(i=>i.label)},timestamp:Date.now(),hypothesisId:'B-E'})}).catch(()=>{});
+  }, [role, location.pathname, cfg.items.length]);
+  // #endregion
 
   return (
     <aside className="w-64 flex flex-col border-r border-border/70 bg-surface sticky top-0 h-screen">

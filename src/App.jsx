@@ -22,6 +22,8 @@ import { TeamManagement } from './pages/TeamManagement';
 import { Notifications } from './pages/Notifications';
 import { Certificates } from './pages/Certificates';
 import { AdminUsers } from './pages/AdminUsers';
+import { CertificateStudio } from './pages/CertificateStudio';
+import { VerifyPage } from './pages/VerifyPage';
 
 // Persist role in sessionStorage so page refresh doesn't lose state
 function getPersistedRole() {
@@ -69,7 +71,10 @@ export function App() {
             <Route path="/team/:communityId" element={<TeamManagement />} />
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/certificates" element={<Certificates />} />
+            <Route path="/certificate-studio" element={<CertificateStudio role={role} />} />
             <Route path="/admin/users" element={<AdminUsers />} />
+            <Route path="/verify" element={<VerifyPage />} />
+            <Route path="/verify/:certId" element={<VerifyPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AppShell>
