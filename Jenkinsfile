@@ -2,6 +2,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'Node22'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -11,13 +15,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm ci'
+                sh 'npm ci'
             }
         }
 
         stage('Build React Application') {
             steps {
-                bat 'npm run build'
+                sh 'npm run build'
             }
         }
     }
@@ -28,7 +32,7 @@ pipeline {
         }
 
         failure {
-            echo 'Committee X pipeline failed. Check the console output.'
+            echo 'Build failed. Check the Jenkins Console Output.'
         }
     }
 }
